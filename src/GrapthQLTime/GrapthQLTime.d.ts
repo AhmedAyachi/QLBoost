@@ -1,0 +1,35 @@
+import {GraphQLResolveInfo} from "graphql";
+
+
+/**
+ * Usable inside GraphQLField.args or GraphQLObjectType.fields 
+ * @param options 
+ */
+export default function GrapthQLTime<Type extends "string"|"number">(options:{
+    /**
+     * required when the type is used for a GraphQLObjectType field.
+     * Uses the value of parent[key].
+     * 
+     * Should not be set when used as an argument type in GraphQLField.args
+     */
+    key:string,
+    /**
+     * @default false
+     */
+    required:boolean,
+    /**
+     * Makes sure that the date parts are in dd,mm,yyyy formats.
+     * @default false
+     */
+    prettify:boolean,
+    use12HourFormat:boolean,
+    resolve(
+        value:Any,
+        args:Object,
+        context:Object,
+        info:GraphQLResolveInfo,
+    ):Any,
+}):Any;
+
+
+type GraphQLDateFormat="dmy"|"ymd"|"mdy";
