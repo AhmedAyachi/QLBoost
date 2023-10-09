@@ -5,19 +5,35 @@ import {GraphQLResolveInfo} from "graphql";
  * Usable inside GraphQLField.args or GraphQLObjectType.fields 
  * @param options 
  */
-export default function GraphQLDate<Type extends "string"|"number">(options:{
-    type:Type,
+export default function GraphQLDate<
+    Type extends "string"|"number"="number",
+    Key extends string|undefined=undefined,
+>(options:{
     /**
-     * required when the type is used for a GraphQLObjectType field.
-     * Uses the value of parent[key].
-     * 
-     * Should not be set when used as an argument type in GraphQLField.args
+     * @default "number"
      */
-    key:string,
+    srcType:Type,
     /**
+     * The key of the target value in the parent object.
+     * 
+     * Required when the type is used as a field.
+     * 
+     * Should not be set when used as an argument in GraphQLField.args
+     */
+    key:Key,
+    /**
+     * @default "/"
+     */
+    seperator:"/"|"."|"-"|","|" ",
+    /**
+    * @default "dmy"
+    */
+    format:GraphQLDateFormat,
+    /**
+     * Makes sure that the date parts are in dd,mm,yyyy formats.
      * @default false
      */
-    required:boolean,
+    prettify:boolean,
     resolve(
         value:Any,
         args:Object,
@@ -26,25 +42,15 @@ export default function GraphQLDate<Type extends "string"|"number">(options:{
     ):Any,
 }&(Type extends "string"?{
     /**
-     * @default "/"
-     */
-    seperator:"/"|"."|"-"|","|" ",
-    /**
      * @default "dmy"
      */
-    informat:GraphQLDateFormat,
+    srcFormat:GraphQLDateFormat,
+}:{})&(Key extends undefined?{
     /**
-    * @default "dmy"
-    */
-    outformat:GraphQLDateFormat,
-    /**
-     * Makes sure that the date parts are in dd,mm,yyyy formats.
      * @default false
      */
-    prettify:boolean,
-}:{
-
-})):Any;
+    required:boolean,
+}:{})):Any;
 
 
 type GraphQLDateFormat="dmy"|"ymd"|"mdy";
