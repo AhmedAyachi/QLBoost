@@ -4,6 +4,7 @@ import {GraphQLString,GraphQLNonNull} from "graphql";
 export default function GraphQLDate(options={}){
     const {srcType="number",key,seperator="/",resolve}=options;
     return {
+        ...options,
         type:options.required?new GraphQLNonNull(GraphQLString):GraphQLString,
         resolve:(parent,args,context,info)=>{
             let value=key?parent[key]:parent;

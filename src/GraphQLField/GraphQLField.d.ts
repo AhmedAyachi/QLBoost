@@ -1,14 +1,13 @@
-import {GraphQLFieldConfig,GraphQLArgumentConfig,GraphQLResolveInfo} from "graphql";
+import {GraphQLFieldConfig as GraphQLConfig,GraphQLArgumentConfig,GraphQLResolveInfo} from "graphql";
 
 
-export default function GraphQLField(options:GraphQLFieldOptions):GraphQLFieldOptions;
+export default function GraphQLField(config:GraphQLFieldConfig):GraphQLConfig;
 
 
-interface GraphQLFieldOptions extends GraphQLFieldConfig<Object,Object,Object> {
-    args?:GraphQLFieldArgsConfig|GraphQLArgConfig[]|(()=>GraphQLFieldArgsConfig|GraphQLArgConfig[]),
-    fields?:GraphQLFieldsConfig|GraphQLFieldsConfig[]|(()=>GraphQLFieldsConfig|GraphQLFieldsConfig[]),
+interface GraphQLFieldConfig extends GraphQLConfig<Object,Object,Object> {
+    args?:GraphQLFieldArgsConfig|GraphQLArgItemConfig[]|(()=>GraphQLFieldArgsConfig|GraphQLArgItemConfig[]),
     resolve?(
-        value:any,
+        parent:any,
         args:Object,
         context:Object,
         info:GraphQLResolveInfo,
@@ -18,8 +17,8 @@ interface GraphQLFieldOptions extends GraphQLFieldConfig<Object,Object,Object> {
 interface GraphQLFieldArgsConfig {
     [key:string]:GraphQLArgConfig;
 }
+
 interface GraphQLArgConfig extends GraphQLArgumentConfig {
-    name:string,
     resolve?(
         value:any,
         args:Object,
@@ -28,15 +27,6 @@ interface GraphQLArgConfig extends GraphQLArgumentConfig {
     ):any|Promise<any>
 }
 
-interface GraphQLFieldsConfig {
-    [key:string]:GraphQLFieldConfig;
-}
-interface GraphQLFieldConfig extends GraphQLArgumentConfig {
+interface GraphQLArgItemConfig extends GraphQLArgConfig {
     name:string,
-    resolve?(
-        value:any,
-        args:Object,
-        context:Object,
-        info:GraphQLResolveInfo,
-    ):any|Promise<any>
 }

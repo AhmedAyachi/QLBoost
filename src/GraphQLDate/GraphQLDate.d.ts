@@ -1,4 +1,4 @@
-import {GraphQLResolveInfo} from "graphql";
+import {GraphQLArgConfig,GraphQLFieldConfig} from "../GraphQLField/GraphQLField";
 
 
 /**
@@ -8,7 +8,10 @@ import {GraphQLResolveInfo} from "graphql";
 export default function GraphQLDate<
     Type extends "string"|"number"="number",
     Key extends string|undefined=undefined,
->(options:{
+>(options:GraphQLDateOptions<Type,Key>):key extends undefined?GraphQLArgConfig:GraphQLFieldConfig;
+
+
+type GraphQLDateOptions<Type,Key>=Omit<key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
     /**
      * @default "number"
      */
@@ -34,12 +37,6 @@ export default function GraphQLDate<
      * @default false
      */
     prettify:boolean,
-    resolve(
-        value:Any,
-        args:Object,
-        context:Object,
-        info:GraphQLResolveInfo,
-    ):Any,
 }&(Type extends "string"?{
     /**
      * @default "dmy"
@@ -50,7 +47,6 @@ export default function GraphQLDate<
      * @default false
      */
     required:boolean,
-}:{})):Any;
-
+}:{});
 
 type GraphQLDateFormat="dmy"|"ymd"|"mdy";
