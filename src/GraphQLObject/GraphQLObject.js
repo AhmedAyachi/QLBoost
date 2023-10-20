@@ -1,6 +1,6 @@
 import {getArrayAsObject} from "../index.js";
 import GraphQLField from "../GraphQLField/GraphQLField.js";
-import {GraphQLObjectType} from "graphql";
+import {GraphQLObjectType,GraphQLInputObjectType} from "graphql";
 
 
 export default function GraphQLObject(config){
@@ -8,7 +8,13 @@ export default function GraphQLObject(config){
     if(fields){
         config.fields=typeof(fields)==="function"?(()=>getFields(fields())):getFields(fields);
     }
-    return new GraphQLObjectType(config);
+    const type=new GraphQLObjectType(config);
+    type.toArgType=(name)=>{
+        const argconfig={...config};
+        argconfig.name=name||argconfig.name+"Arg";
+        return new GraphQLInputObjectType(argconfig);
+    }
+    return type;
 }
 
 const getFields=(value)=>{

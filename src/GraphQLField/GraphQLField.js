@@ -19,15 +19,18 @@ export default function GraphQLField(config){
         }
         config.args=args;
     }
-    config.resolve=(args&&(typeof(mainResolver)==="function"))?(async (parent,args,context,info)=>{
-        for(const key in args){
-            const resolver=resolvers[key];
-            if(resolver){
-                const value=resolver(args[key],args,context,info);
-                args[key]=value instanceof Promise?await value:value;
+    if(args&&(typeof(mainResolver)==="function")){
+        config.resolve=async (parent,args,context,info)=>{
+            for(const key in args){
+                const resolver=resolvers[key];
+                if(resolver){
+                    const value=resolver(args[key],args,context,info);
+                    args[key]=value instanceof Promise?await value:value;
+                }
             }
-        }
-        return mainResolver(parent,args,context,info);
-    }):mainResolver;
+            return mainResolver(parent,args,context,info);
+        };
+    }
+    else if(mainResolver){config.resolve=mainResolver};
     return config;
 }
