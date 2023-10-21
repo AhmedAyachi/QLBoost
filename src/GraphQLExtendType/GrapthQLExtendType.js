@@ -1,7 +1,7 @@
-import {GraphQLObjectType} from "graphql";
+const {GraphQLObjectType}=require("graphql");
 
 
-export default function GrapthQLExtendType(parent,config){
+module.exports=function GrapthQLExtendType(parent,config){
     const {fields}=config;
     return new GraphQLObjectType({
         ...config,

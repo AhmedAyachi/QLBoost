@@ -1,7 +1,7 @@
-import {getArrayAsObject} from "../index.js";
+const {getArrayAsObject}=require("../index");
 
 
-export default function GraphQLField(config){
+module.exports=function GraphQLField(config){
     const mainResolver=config.resolve,resolvers={};
     let {args}=config;
     if(args){

@@ -1,7 +1,7 @@
-import {GraphQLString,GraphQLNonNull} from "graphql";
+const {GraphQLString,GraphQLNonNull}=require("graphql");
 
 
-export default function GraphQLDate(options={}){
+module.exports=function GraphQLDate(options={}){
     const {srcType="number",key,seperator="/",resolve}=options;
     return {
         ...options,

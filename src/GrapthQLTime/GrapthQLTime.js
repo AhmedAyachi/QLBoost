@@ -1,7 +1,7 @@
-import {GraphQLString,GraphQLNonNull} from "graphql";
+const {GraphQLString,GraphQLNonNull}=require("graphql");
 
 
-export default function GrapthQLTime(options={}){
+module.exports=function GrapthQLTime(options={}){
     const {srcType="number",key,required,use12HourFormat,prettify,resolve}=options;
     return {
         ...options,

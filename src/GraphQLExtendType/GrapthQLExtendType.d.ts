@@ -3,5 +3,5 @@ import {GraphQLObjectType,GraphQLScalarType,GraphQLObjectTypeConfig} from "graph
 
 export default function GraphQLExtendType(
     parentType:GraphQLScalarType|GraphQLObjectType|(()=>GraphQLScalarType|GraphQLObjectType),
-    config:GraphQLObjectTypeConfig<TSource,TContext>,
+    config:GraphQLObjectTypeConfig<Object,Object>,
 ):GraphQLObjectType;

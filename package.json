@@ -1,22 +1,21 @@
 {
   "name": "graphqlutils",
   "version": "0.0.1",
-  "description": "adds new features to graphql like args resolvers and more.",
+  "type": "commonjs",
+  "description": "adds new features to graphql like arg resolvers and more.",
   "main": "src/index.js",
-  "type": "module",
   "types": "index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
+  "peerDependencies": {
     "graphql": "^15.8.0"
   },
+  "peerDependenciesMeta": {
+    "graphql":{
+      "optional": true
+    }
+  },
   "keywords": [
-    "graphql",
-    "args",
-    "resolvers",
-    "date",
-    "time"
+    "graphql","args","resolvers",
+    "date","time","parse"
   ],
   "author": "Ahmed Ayachi",
   "license": "MIT"

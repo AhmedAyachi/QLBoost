@@ -1,9 +1,8 @@
-import {getArrayAsObject} from "../index.js";
-import GraphQLField from "../GraphQLField/GraphQLField.js";
-import {GraphQLObjectType,GraphQLInputObjectType} from "graphql";
+const {getArrayAsObject,GraphQLField}=require("../index");
+const {GraphQLObjectType,GraphQLInputObjectType}=require("graphql");
 
 
-export default function GraphQLObject(config){
+module.exports=function GraphQLObject(config){
     const {fields}=config;
     if(fields){
         config.fields=typeof(fields)==="function"?(()=>getFields(fields())):getFields(fields);

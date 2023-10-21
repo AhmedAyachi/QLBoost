@@ -8,10 +8,10 @@ import {GraphQLArgConfig,GraphQLFieldConfig} from "../GraphQLField/GraphQLField"
 export default function GraphQLDate<
     Type extends "string"|"number"="number",
     Key extends string|undefined=undefined,
->(options:GraphQLDateOptions<Type,Key>):key extends undefined?GraphQLArgConfig:GraphQLFieldConfig;
+>(options:GraphQLDateOptions<Type,Key>):Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig;
 
 
-type GraphQLDateOptions<Type,Key>=Omit<key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
+type GraphQLDateOptions<Type,Key>=Omit<Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
     /**
      * @default "number"
      */

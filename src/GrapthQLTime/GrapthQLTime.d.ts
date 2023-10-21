@@ -11,7 +11,7 @@ export default function GrapthQLTime<
 >(options:GraphQLTimeOptions<Type,Key>):Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig;
 
 
-type GraphQLTimeOptions<Type,Key>=Omit<key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
+type GraphQLTimeOptions<Type,Key>=Omit<Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
     /**
      * @default "number"
      */
