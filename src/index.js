@@ -13,11 +13,11 @@ exports.getArrayAsObject=(array=[])=>{
 }
 
 exports.Query={
-    parse:(data)=>{
+    parse:function(data){
         if(Array.isArray(data)){
             let query="[";
             data.forEach(item=>{
-                query+=toGraphQLQuery(item)+",";
+                query+=this.parse(item)+",";
             });
             query+="]";
             return query; 
@@ -30,7 +30,7 @@ exports.Query={
                     for(const key in data){
                         const value=data[key];
                         if(value!==undefined){
-                            query+=`${key}:${toGraphQLQuery(value)},`;
+                            query+=`${key}:${this.parse(value)},`;
                         }
                     }
                     query+="}";
