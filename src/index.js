@@ -13,27 +13,28 @@ exports.getArrayAsObject=(array=[])=>{
 }
 
 exports.Query={
-    parse:function(data){
+    stringify:function(data,options){
+        const {spread}=options||{};
         if(Array.isArray(data)){
-            let query="[";
+            let query=spread?"":"[";
             data.forEach(item=>{
-                query+=this.parse(item)+",";
+                query+=this.stringify(item)+",";
             });
-            query+="]";
+            if(!spread){query+="]"};
             return query; 
         }
         else if(data){
             switch(typeof(data)){
                 case "string": return `"${data}"`;
                 case "object": 
-                    let query="{";
+                    let query=spread?"":"{";
                     for(const key in data){
                         const value=data[key];
                         if(value!==undefined){
-                            query+=`${key}:${this.parse(value)},`;
+                            query+=`${key}:${this.stringify(value)},`;
                         }
                     }
-                    query+="}";
+                    if(!spread){query+="}"};
                     return query;
                 case "boolean":
                 case "number": return data;

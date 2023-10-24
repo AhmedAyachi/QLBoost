@@ -9,5 +9,10 @@ export {default as GraphQLObject} from "./src/GraphQLObject/GraphQLObject.js";
 
 
 export const Query={
-    parse():String;
+    stringify(
+        value:any,
+        options?:{
+            spread:boolean,
+        },
+    ):String;
 }
