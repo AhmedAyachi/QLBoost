@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "types": "index.d.ts",
   "peerDependencies": {
-    "graphql": "^15.8.0"
+    "graphql": ">=15.8.0"
   },
   "peerDependenciesMeta": {
     "graphql":{

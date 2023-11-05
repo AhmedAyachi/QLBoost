@@ -8,7 +8,7 @@ export {default as GraphQLExtendType} from "./src/GraphQLExtendType/GrapthQLExte
 export {default as GraphQLObject} from "./src/GraphQLObject/GraphQLObject.js";
 
 
-export const Query={
+export interface Query {
     stringify(
         value:any,
         options?:{
