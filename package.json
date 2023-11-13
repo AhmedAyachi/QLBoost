@@ -1,5 +1,5 @@
 {
-  "name": "graphqlutils",
+  "name": "qlboost",
   "version": "1.0.0",
   "description": "adds new features to graphql like arg resolvers and more.",
   "main": "src/index.js",
