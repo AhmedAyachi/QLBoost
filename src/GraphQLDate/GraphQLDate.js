@@ -2,14 +2,14 @@ const {GraphQLString,GraphQLNonNull}=require("graphql");
 
 
 module.exports=function GraphQLDate(options={}){
-    const {srcType="number",key,seperator="/",resolve}=options;
+    const {key,seperator="/",resolve}=options;
     return {
         ...options,
         type:options.required?new GraphQLNonNull(GraphQLString):GraphQLString,
         resolve:(parent,args,context,info)=>{
             let value=key?parent[key]:parent;
             let date;
-            if(srcType==="string"){
+            if(typeof(value)==="string"){
                 let day,month,year;
                 const parts=value.split(/\/|\-|\.| |\,/g).map(n=>parseInt(n));
                 switch(options.srcFormat){

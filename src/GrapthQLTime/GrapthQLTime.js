@@ -2,14 +2,14 @@ const {GraphQLString,GraphQLNonNull}=require("graphql");
 
 
 module.exports=function GrapthQLTime(options={}){
-    const {srcType="number",key,required,use12HourFormat,prettify,resolve}=options;
+    const {key,required,use12HourFormat,prettify,resolve}=options;
     return {
         ...options,
         type:required?new GraphQLNonNull(GraphQLString):GraphQLString,
         resolve:(parent,args,context,info)=>{
             let value=key?parent[key]:parent;
             let hours,minutes;
-            if(srcType==="string"){
+            if(typeof(value)==="string"){
                 [hours,minutes]=value.split(":").map(n=>parseInt(n));
                 if(!((-1<hours)&&(hours<12)&&(-1<minutes)&&(minutes<60))){
                     throw new Error("invalid time");

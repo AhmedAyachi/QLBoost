@@ -6,16 +6,11 @@ import {GraphQLArgConfig,GraphQLFieldConfig} from "../GraphQLField/GraphQLField"
  * @param options 
  */
 export default function GrapthQLTime<
-    Type extends "string"|"number"="number",
     Key extends string|undefined=undefined,
->(options:GraphQLTimeOptions<Type,Key>):Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig;
+>(options:GraphQLTimeOptions<Key>):Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig;
 
 
-type GraphQLTimeOptions<Type,Key>=Omit<Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
-    /**
-     * @default "number"
-     */
-    srcType:Type,
+type GraphQLTimeOptions<Key>=Omit<Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
     /**
      * The key of the target value in the parent object.
      * 

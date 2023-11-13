@@ -48,7 +48,7 @@ exports.Query={
 exports.GraphQLField=()=>({});
 exports.GraphQLDate=()=>({});
 exports.GrapthQLTime=()=>({});
-exports.GraphQLExtendType=()=>({});
+exports.extendObjectType=()=>({});
 exports.GraphQLObject=()=>({});
 
 try{
@@ -56,7 +56,7 @@ try{
     exports.GraphQLField=require("./GraphQLField/GraphQLField");
     exports.GraphQLDate=require("./GraphQLDate/GraphQLDate");
     exports.GrapthQLTime=require("./GrapthQLTime/GrapthQLTime");
-    exports.GraphQLExtendType=require("./GraphQLExtendType/GrapthQLExtendType");
+    exports.extendObjectType=require("./extendObjectType/extendObjectType");
     exports.GraphQLObject=require("./GraphQLObject/GraphQLObject");
 
 }

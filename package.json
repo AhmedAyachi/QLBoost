@@ -1,7 +1,6 @@
 {
   "name": "graphqlutils",
   "version": "0.0.1",
-  "type": "commonjs",
   "description": "adds new features to graphql like arg resolvers and more.",
   "main": "src/index.js",
   "types": "index.d.ts",

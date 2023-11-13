@@ -6,16 +6,11 @@ import {GraphQLArgConfig,GraphQLFieldConfig} from "../GraphQLField/GraphQLField"
  * @param options 
  */
 export default function GraphQLDate<
-    Type extends "string"|"number"="number",
     Key extends string|undefined=undefined,
->(options:GraphQLDateOptions<Type,Key>):Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig;
+>(options:GraphQLDateOptions<Key>):Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig;
 
 
-type GraphQLDateOptions<Type,Key>=Omit<Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
-    /**
-     * @default "number"
-     */
-    srcType:Type,
+type GraphQLDateOptions<Key>=Omit<Key extends undefined?GraphQLArgConfig:GraphQLFieldConfig,"type">&{
     /**
      * The key of the target value in the parent object.
      * 
@@ -33,16 +28,16 @@ type GraphQLDateOptions<Type,Key>=Omit<Key extends undefined?GraphQLArgConfig:Gr
     */
     format:GraphQLDateFormat,
     /**
+     * Required when the source value is of type string.
+     * @default "dmy"
+     */
+    srcFormat:GraphQLDateFormat,
+    /**
      * Makes sure that the date parts are in dd,mm,yyyy formats.
      * @default false
      */
     prettify:boolean,
-}&(Type extends "string"?{
-    /**
-     * @default "dmy"
-     */
-    srcFormat:GraphQLDateFormat,
-}:{})&(Key extends undefined?{
+}&(Key extends undefined?{
     /**
      * @default false
      */
