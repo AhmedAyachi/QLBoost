@@ -1,6 +1,6 @@
 {
   "name": "qlboost",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "adds new features to graphql like arg resolvers and more.",
   "main": "src/index.js",
   "types": "index.d.ts",
@@ -16,6 +16,10 @@
     "graphql","args","resolvers",
     "date","time","parse"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AhmedAyachi/QLBoost"
+  },
   "author": "Ahmed Ayachi",
   "license": "MIT"
 }

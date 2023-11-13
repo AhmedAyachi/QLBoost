@@ -221,7 +221,7 @@ A predefined GraphQL object usable as a graphql field/arg inside a **GraphQLObje
 ## How to use it ?
 Just install the package using npm or any package manager of your choice :
 
-    npm install --save graphqlutils
+    npm install --save qlboost
 
 To use it in a webpack environment without installing the graphql package,
 add the config below to your webpack configuration:
