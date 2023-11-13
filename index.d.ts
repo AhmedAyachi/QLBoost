@@ -8,7 +8,8 @@ export {default as extendObjectType} from "./src/extendObjectType/extendObjectTy
 export {default as GraphQLObject} from "./src/GraphQLObject/GraphQLObject.js";
 
 
-export interface Query {
+export const Query:Query;
+interface Query {
     stringify(
         value:any,
         options?:{
