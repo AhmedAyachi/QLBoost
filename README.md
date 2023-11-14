@@ -233,3 +233,5 @@ add the config below to your webpack configuration:
 			}),
 		],
 	}
+
+> GraphQLObject, GraphQLField, extendObjectType, GraphQLDate and GraphQLTime, all require the graphql package.
