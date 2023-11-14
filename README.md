@@ -1,3 +1,6 @@
+## Disclaimer
+This is a third-party graphql package. If the features provided by the latter has been implemented in graphql new versions, I highly recommend using those instead.
+
 ## What is this ?
 This repo addes additional features to graphql exports such as **GraphQLObjectType** args resolvers, fields/args as arrays, extending **GraphQLObjectType** types and more.
 This repo has graphql >=15.8.0 package as an optional peer dependency, so make sure you have graphql installed through:
@@ -221,7 +224,7 @@ A predefined GraphQL object usable as a graphql field/arg inside a **GraphQLObje
 ## How to use it ?
 Just install the package using npm or any package manager of your choice :
 
-    npm install --save qlboost
+    npm install --save graphqlutils
 
 To use it in a webpack environment without installing the graphql package,
 add the config below to your webpack configuration:
