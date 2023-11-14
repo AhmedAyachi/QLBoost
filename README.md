@@ -30,9 +30,9 @@ Of Type **Function**: ( value , args , context , info ) : any | Promise\<any\>
             findItems:GraphQLField({
                 type:new GraphQLList(ItemType),
                 args:[
-	                {
-					    name:"query",// required to play the role of the key
-						type:new GraphQLNonNull(GraphQLString),
+	            	{
+		            	name:"query",// required to play the role of the key
+			    		type:new GraphQLNonNull(GraphQLString),
 						resolve:(value,args,context,info)=>{
 							/* Just for the sake of the example.
 							The resolver can be async.
@@ -44,11 +44,11 @@ Of Type **Function**: ( value , args , context , info ) : any | Promise\<any\>
 							return value.trim();
 						},
 				    },
-			    ],
+				],
             }),
         }),
     });
-Just go to any GraphQLField  and 
+Just go to any GraphQLField and pass it as param to the **GraphQLField** function.
 
 ## GraphQLObject
 A function that takes a **GraphQLObjectTypeConfig** object as param and returns a **new GraphQLObjectType instance** with the provided config object.
