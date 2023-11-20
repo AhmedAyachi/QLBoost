@@ -1,6 +1,3 @@
-## Disclaimer
-This is a third-party graphql package. If the features provided by the latter has been implemented in graphql new versions, I highly recommend using those instead.
-
 ## What is this ?
 This repo addes additional features to graphql exports such as **GraphQLObjectType** args resolvers, fields/args as arrays, extending **GraphQLObjectType** types and more.
 This repo has graphql >=15.8.0 package as an optional peer dependency, so make sure you have graphql installed through:
@@ -30,9 +27,9 @@ Of Type **Function**: ( value , args , context , info ) : any | Promise\<any\>
             findItems:GraphQLField({
                 type:new GraphQLList(ItemType),
                 args:[
-	            	{
-		            	name:"query",// required to play the role of the key
-			    		type:new GraphQLNonNull(GraphQLString),
+	                {
+					    name:"query",// required to play the role of the key
+						type:new GraphQLNonNull(GraphQLString),
 						resolve:(value,args,context,info)=>{
 							/* Just for the sake of the example.
 							The resolver can be async.
@@ -44,11 +41,11 @@ Of Type **Function**: ( value , args , context , info ) : any | Promise\<any\>
 							return value.trim();
 						},
 				    },
-				],
+			    ],
             }),
         }),
     });
-Just go to any GraphQLField and pass it as param to the **GraphQLField** function.
+Just go to any graphql field object  and pass it as an argument to the GraphQLField function. 
 
 ## GraphQLObject
 A function that takes a **GraphQLObjectTypeConfig** object as param and returns a **new GraphQLObjectType instance** with the provided config object.
@@ -224,7 +221,7 @@ A predefined GraphQL object usable as a graphql field/arg inside a **GraphQLObje
 ## How to use it ?
 Just install the package using npm or any package manager of your choice :
 
-    npm install --save graphqlutils
+    npm install --save qlboost
 
 To use it in a webpack environment without installing the graphql package,
 add the config below to your webpack configuration:
@@ -236,3 +233,5 @@ add the config below to your webpack configuration:
 			}),
 		],
 	}
+
+> GraphQLObject, GraphQLField, extendObjectType, GraphQLDate and GraphQLTime, all require the graphql package.
