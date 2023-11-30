@@ -73,7 +73,7 @@ as it's done under the hood.
     });
 The name property is playing the role of the key in the fields object.
 #### toArgType Method
-In some cases a graphql object type is needed to be used as an Output and Input type. Instead of redefining an Output type from scratch, you can use the **toArgType** method of the object returned by the ***GraphQLObject*** function to create an GraphQLInputType.
+In some cases a graphql object type is needed to be used as an Output and Input type. Instead of redefining an Output type from scratch, you can use the **toArgType** method of the object returned by the ***GraphQLObject*** function to create a GraphQLInputType.
 |Param|Type|Description|
 |-------|------|-------|
 |name|Optional String|The Input type name. Default to the object name with "Arg" as a suffix|
@@ -83,7 +83,7 @@ In some cases a graphql object type is needed to be used as an Output and Input 
 		fields:()=>[
 			{
 				name:"placeOrder",
-				type:new  GraphQLList(ItemType),
+				type:new GraphQLList(ItemType),
 				args:[{
 					name:"items",
 					type:new  GraphQLList(ItemType.toArgType()),
@@ -122,7 +122,6 @@ The UserType will have as fields: name, birthdate and id.
 
 #### Stringify
 Stringifies a javascript object into a graphql query object.
-Useful when you need to send graphql requests manually without using the apollo client.
 |Param|Type|Description|
 |------|----|------------|
 |value|any|value to parse|
@@ -183,11 +182,11 @@ A predefined GraphQL object usable as a graphql field/arg inside a **GraphQLObje
 |Name|Type|Description|
 |----|----|-----------|
 |key|string|The value key in the parent object. Required when the type is used as a field|
-|seperator|"/" "." "-" "," or scape|Date components separator|
-|prettify|boolean|make sure days, months and years are respectively in "dd","mm","yyyy" format|
+|seperator|"/" "." "-" "," or space|Date components separator|
+|prettify|boolean|puts days, months and years respectively in "dd","mm","yyyy" format|
 |format|"dmy" "ymd" "mdy"|returned date format|
 |srcFormat|"dmy" "ymd" "mdy"|The original value format. Only required when the original value is of type string|
-|required|boolean|sets GraphQLNonNull type. Only when used as an arg|
+|required|boolean|to specify if GraphQLNonNull should be used|
 
 #### As field :
     GraphQLObject({
