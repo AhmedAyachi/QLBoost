@@ -1,9 +1,11 @@
 ## What is this ?
-This repo addes additional features to graphql exports such as **GraphQLObjectType** args resolvers, fields/args as arrays, extending **GraphQLObjectType** types and more.
+***QLBoost*** addes additional features to graphql exports such as **GraphQLObjectType** args resolvers, fields/args as arrays, extending **GraphQLObjectType** types and more.
 This repo has graphql >=15.8.0 package as an optional peer dependency, so make sure you have graphql installed through:
 
     npm install --save graphql
 
+## Demo
+check the [BookStore](https://github.com/AhmedAyachi/BookStore) repo.
 
 ## GraphQLField
 A function that takes a config object as param and returns a **GraphQLFieldConfig** object.
